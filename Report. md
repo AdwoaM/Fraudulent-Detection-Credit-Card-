@@ -1,42 +1,65 @@
-# Fraud Detection Report
-![fraudImage](Credit-Card-Fraud-Detection.png)
+# Fraud Detection 
+![fraudImage](fraud_detect.jpg)
+# Background
+Fraud is prevalent these days, whether you are a small taco shop or a large international business. While there are emerging technologies that employ machine learning and artificial intelligence to detect fraud, many instances of fraud detection still require strong data analytics to find abnormal charges.
 
-ERD below depicts the credit card table's relationship bewteen cradholder table and the transaction table with the cardholder table also connecting merchant table and merchant table connecting to the merchant_category and transaction.
-![ERD](ERD.png)
+In this homework assignment, you will apply your new SQL skills to analyze historical credit card transactions and consumption patterns in order to identify possible fraudulent transactions.
 
-Per the database, transactions less than $2.00, ignored by cardholders roughly amount to 350 transaction which is quite excessive to the point that Megan Price had the highest record of 26 transactions(less than $2.00) with the minimum transactions tied out by Elizabeth Sawyer and Laurie Gibbs. This can be evident that the credit card has been hacked.
+You are asked to accomplish three main tasks:
 
-The highest transactions made between 7:00am and 9:00am mostly have purchase with extremely high amount recorded - highest amount recorded being $1894. Comparatively, transaction made for the rest of the day recorded extremely high purchase amounts as well. Based on the evidence, we can conclude that this is a somehwat normal transaction executed between these timeframe and that there is no cause for alarm. It is quite safe to assume that business would make these transactions since it is operating in normal business hours. 
+ 1. Data Modeling: Define a database model to store the credit card transactions data and create a new PostgreSQL database using your model.
+ 2. Data Engineering: Create a database schema on PostgreSQL and populate your database from the CSV files provided.
+ 3. Data Analysis: Analyze the data to identify possible fraudulent transactions trends data, and develop a report of your observations.
 
-Based on research conducted, the top 5 merchants prone to being hacked using small transactions are:
+# Instructions
 
-    :one: Wood-Ramirez
+# Data Modeling
 
-    :two: Hood-Philips
+Create an entity relationship diagram (ERD) by inspecting the provided CSV files. Part of the challenge here is to figure out how many tables you should create, as well as what kind of relationships you need to define among the tables. Feel free to discuss your database model design ideas with your classmates. You can use a tool like 
+[QDB](https://www.quickdatabasediagrams.com/) to create your model
 
-    :three: Baker Inc
+Hints:
+* For the credit_card and transaction tables, the card column should be a VARCHAR (20) datatype rather than an INT.
+* For the transaction table, the date column should be a TIMESTAMP datatype rather than DATE.
 
-    :four: Jarvis-Turner
+## Data Engineering
+Using your database model as a blueprint, create a database schema for each of your tables and relationships. Remember to specify data types, primary keys, foreign keys, and any other constraints you defined. After creating the database schema, import the data from the corresponding CSV files.
 
-    :five: Sweeney-Paul
+## Data Analysis
+## Part 1:
+The CFO of your firm has requested a report to help analyze potential fraudulent transactions. Using your newly created database, generate queries that will discover the information needed to answer the following questions, then use your repository's ReadME file to create a markdown report you can share with the CFO:
 
-## Cardholder IDs Two(2) & Eighteen (18)
+* Some fraudsters hack a credit card by making several small transactions (generally less than $2.00), which are typically ignored by cardholders.
+    * How can you isolate (or group) the transactions of each cardholder?
+    * Count the transactions that are less than $2.00 per cardholder.
+    * Is there any evidence to suggest that a credit card has been hacked? Explain your rationale.
 
-![IDs](Card2&18.png)
+* Take your investigation a step further by considering the time period in which potentially fraudulent transactions are made.
+    * What are the top 100 highest transactions made between 7:00 am and 9:00 am?
+    * Do you see any anomalous transactions that could be fraudulent?
+    * Is there a higher number of fraudulent transactions made during this time frame versus the rest of the day?
+    * If you answered yes to the previous question, explain why you think there might be fraudulent transactions during this time frame.
+* What are the top 5 merchants prone to being hacked using small transactions?
+* Create a view for each of your queries.
 
-Inferring from the graphical representation, cardholder ID 2 has steady transactional activity which tells us that there is little to no possible fraudulent activity on the card unlike cardholder ID 18 which has sharp strikes every month (one or two activities)- this is an outlier for this card id based on the fact that the card mostly has constant transaction actitives. We can conclude that card 18 is prevalent to fraudulent activity with these spikes and has to be investigated.
+# Part 2
+Your CFO has also requested detailed trends data on specific card holders. Use the starter notebook to query your database and generate visualizations that supply the requested information as follows, then add your visualizations and observations to your markdown report:
+* The two most important customers of the firm may have been hacked. Verify if there are any fraudulent transactions in their history. For privacy reasons, you only know that their cardholder IDs are 2 and 18.
+    * Using hvPlot, create a line plot representing the time series of transactions over the course of the year for each cardholder separately.
+    * Next, to better compare their patterns, create a single line plot that contains both card holders' trend data.
+    * What difference do you observe between the consumption patterns? Does the difference suggest a fraudulent transaction? Explain your rationale.
+* The CEO of the biggest customer of the firm suspects that someone has used her corporate credit card without authorization in the first quarter of 2018 to pay quite expensive restaurant bills. Again, for privacy reasons, you know only that the cardholder ID in question is 25.
+    * Using hvPlot, create a box plot, representing the expenditure data from January 2018 to June 2018 for cardholder ID 25.
+    * Are there any outliers for cardholder ID 25? How many outliers are there per month?
+    * Do you notice any anomalies? Describe your observations and conclusions.
 
-## What about cardholder ID 25
+# Challenge
+Another approach to identifying fraudulent transactions is to look for outliers in the data. Standard deviation or quartiles are often used to detect outliers.
+Use the challenge starter notebook to code two Python functions:
+* One that uses standard deviation to identify anomalies for any cardholder.
+* Another that uses interquartile range to identify anomalies for any cardholder.
 
-![CH25](ID25.png)
-
-Speaking of cardholder ID 25, here are the outliers for the following month:
-
-    :January: 1
-    :February: 0
-    :March: 1
-    :April: 3
-    :May: 1
-    :June: 3
-With the exception of the month of February, all the other months had an abnormal transaction activity with an average of 1.5, with month of April and June recording the highest abnormalities.  
-If the cardholder is unaware of these abnormalities, it must be reported for further investigation and resolve.
+For help with outliers detection, read the following articles:
+* [Outliers_Calc](https://www.wikihow.com/Calculate-Outliers)
+* [Outliers_STD](https://www.kdnuggets.com/2017/02/removing-outliers-standard-deviation-python.html)
+* [ML-Statistical outliers](https://machinelearningmastery.com/how-to-use-statistics-to-identify-outliers-in-data/)
