@@ -33,10 +33,15 @@ Inferring from the graphical representation, cardholder ID 2 has steady transact
 Speaking of cardholder ID 25, here are the outliers for the following month:
 
 :January: 1
+
 :February: 0
+
 :March: 1
+
 :April: 3
+
 :May: 1
+
 :June: 3
 
 With the exception of the month of February, all the other months had an abnormal transaction activity with an average of 1.5, with month of April and June recording the highest abnormalities.  
