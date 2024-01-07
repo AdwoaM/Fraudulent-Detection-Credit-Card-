@@ -10,15 +10,15 @@ The highest transactions made between 7:00am and 9:00am mostly have purchase wit
 
 Based on research conducted, the top 5 merchants prone to being hacked using small transactions are:
 
-    :one: Wood-Ramirez
+:one: Wood-Ramirez
 
-    :two: Hood-Philips
+:two: Hood-Philips
 
-    :three: Baker Inc
+:three: Baker Inc
 
-    :four: Jarvis-Turner
+:four: Jarvis-Turner
 
-    :five: Sweeney-Paul
+:five: Sweeney-Paul
 
 ## Cardholder IDs Two(2) & Eighteen (18)
 
@@ -32,11 +32,12 @@ Inferring from the graphical representation, cardholder ID 2 has steady transact
 
 Speaking of cardholder ID 25, here are the outliers for the following month:
 
-    :January: 1
-    :February: 0
-    :March: 1
-    :April: 3
-    :May: 1
-    :June: 3
+:January: 1
+:February: 0
+:March: 1
+:April: 3
+:May: 1
+:June: 3
+
 With the exception of the month of February, all the other months had an abnormal transaction activity with an average of 1.5, with month of April and June recording the highest abnormalities.  
 If the cardholder is unaware of these abnormalities, it must be reported for further investigation and resolve.
